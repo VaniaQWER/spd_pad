@@ -10,34 +10,39 @@ const data = [
     uri: require('../../assets/icon_check_before_acceptance.png'),
     text: '验收',
     pending: 8,
-    route: 'Acceptance'
+    route: '/acceptance/list'
   },
   {
     uri: require('../../assets/icon_grounding.png'),
     text: '上架',
     pending: 10,
-    route: 'Grounding'
+    route: '/grounding/list'
   },
   {
     uri: require('../../assets/icon_lower_frame.png'),
     text: '拣货下架',
     pending: 399,
-    route: 'Pick'
+    route: '/undercarriage/list'
   },
   {
     uri: require('../../assets/icon_inventory.png'),
     text: '盘点',
     pending: 88,
-    route: 'Inventory'
+    route: '/inventory/list'
   },
   {
     uri: require('../../assets/icon_query.png'),
     text: '库存查询',
-    route: 'Stock'
+    route: '/stock'
   },
 ]
 
 class HomePage extends PureComponent { 
+
+  toPage =(path)=>{
+    const { history } = this.props;
+    history.push(path)
+  }
   render() {
     const { history } = this.props;
     return (
@@ -61,7 +66,7 @@ class HomePage extends PureComponent {
               return (
                 <div
                   className={styles.grid_item}
-                  onClick={() => alert('跳转')}
+                  onClick={() =>this.toPage(el.route)}
                 >
                   <Badge text={el.pending}>
                     <img src={el.uri} style={{width: 60, height: 60}} alt=''/>
@@ -75,7 +80,7 @@ class HomePage extends PureComponent {
         <WhiteSpace />
         <Card>
           <Card.Header title={<div className={styles.item_title_line}>提醒消息</div>}/>
-          <Card.Body>
+          <Card.Body style={{height:'46vh',overflowY: 'scroll'}}>
           <ListViewScroll 
             url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/message`}
             queryParams={{

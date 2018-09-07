@@ -85,39 +85,52 @@ class Stock extends PureComponent {
                           </Flex>
                           <Flex>
                             <Flex.Item>
+                            {
+                              item.index==1?
+                              (
                                 <InputItem
                                   {...getFieldProps('number')}
                                   type="number"
                                 >数量 :</InputItem>
+                              ):<p>数量 :<span>200</span></p>
+                            }
                             </Flex.Item>
                             <Flex.Item>规格 :<span>25ml:1.25g</span></Flex.Item>
                           </Flex>
-                          <Flex>
-                            <Flex.Item>
-                                <InputItem
-                                  {...getFieldProps('number')}
-                                  type="number"
-                                >生产日期 :</InputItem>
-                            </Flex.Item>
-                            <Flex.Item>
-                              <InputItem
-                                {...getFieldProps('number')}
-                                type="number"
-                              >生产批号 :</InputItem>
-                            </Flex.Item>
-                          </Flex>
-                          <Flex>
-                            <Flex.Item>
-                                <InputItem
-                                  {...getFieldProps('number')}
-                                  type="number"
-                                >有效期至 :</InputItem>
-                            </Flex.Item>
-                            <Flex.Item>生产厂家 :<span>浙江安宝药业有限公司</span></Flex.Item>
-                          </Flex>
+                          
+                          {
+                            item.index==1?
+                            (
+                              <div>
+                                <Flex>
+                                  <Flex.Item>
+                                      <InputItem
+                                        {...getFieldProps('number')}
+                                        type="number"
+                                      >生产日期 :</InputItem>
+                                  </Flex.Item>
+                                  <Flex.Item>
+                                    <InputItem
+                                      {...getFieldProps('number')}
+                                      type="number"
+                                    >生产批号 :</InputItem>
+                                  </Flex.Item>
+                                </Flex>
+                                <Flex>
+                                  <Flex.Item>
+                                      <InputItem
+                                        {...getFieldProps('number')}
+                                        type="number"
+                                      >有效期至 :</InputItem>
+                                  </Flex.Item>
+                                  <Flex.Item>生产厂家 :<span>浙江安宝药业有限公司</span></Flex.Item>
+                                </Flex>
+                              </div>
+                            ):null
+                          }
                           <hr className='hr'/>
                           <Flex justify='end'>
-                            <Button inline  size="small" className='button-gap'>收起编辑</Button>
+                            <Button inline  size="small" className='button-gap'>{item.index===1?`收起编辑`:`展开编辑`}</Button>
                             <Button inline  size="small" className='button-gap'>更多详情</Button>
                             <Button inline  size="small" className='button-gap' type="primary">提交</Button>
                           </Flex>

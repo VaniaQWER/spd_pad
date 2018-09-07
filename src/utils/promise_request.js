@@ -27,12 +27,12 @@ export default function promiseRequest(url, options) {
   };
   const newOptions = { ...defaultOptions, ...options };
   if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
-    if(newOptions.type){
+    if(newOptions.type === 'formData'){
       newOptions.headers = {
-        Accept: 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-      ...newOptions.headers,
-      };
+        Accept: 'text/plain, text/html,application/json',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+        ...newOptions.headers,
+      }
     }else{
       newOptions.headers = {
         Accept: 'application/json',
@@ -40,8 +40,11 @@ export default function promiseRequest(url, options) {
         ...newOptions.headers,
       };
     }
-    //newOptions.body =  JSON.stringify(newOptions.body);
-   newOptions.body = newOptions.type ? querystring.stringify(newOptions.body) : JSON.stringify(newOptions.body);
+    // newOptions.body = JSON.stringify(newOptions.body);
+    newOptions.body = newOptions.type==="formData" ? querystring.stringify(newOptions.body) : JSON.stringify(newOptions.body);
+  }else if(newOptions.method === 'GET' || newOptions.method === 'get'){
+    url = newOptions.type ? `${url}?${querystring.stringify(newOptions.body)}` : '';
+    delete newOptions.body;
   }
   return fetch(url, newOptions)
     .then(checkStatus)

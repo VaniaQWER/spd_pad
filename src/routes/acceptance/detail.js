@@ -2,14 +2,14 @@
  * @Author: wwb 
  * @Date: 2018-09-07 18:47:11 
  * @Last Modified by: wwb
- * @Last Modified time: 2018-09-07 23:39:22
+ * @Last Modified time: 2018-09-08 00:31:09
  * 
  * 验收详情
  */
 
 
 import React, { PureComponent } from 'react';
-import { NavBar, Icon, WhiteSpace, List, Button, InputItem } from 'antd-mobile';
+import { NavBar, Icon, WhiteSpace, List, Button, InputItem, Accordion } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { connect } from 'dva';
 
@@ -65,7 +65,6 @@ class AcceptanceDetail extends PureComponent {
   render() {
     const { history, form } = this.props;
     const { index, detailsData, amount } = this.state;
-    console.log(amount,'ss')
     return (
       <div>
         {/* <div className='ysysnt_detail_content'>
@@ -96,9 +95,13 @@ class AcceptanceDetail extends PureComponent {
           <span>{index}</span>/12
         </NavBar>
         <WhiteSpace size="sm"/>
-        <List className="my-list">
-          <Item arrow="horizontal" multipleLine onClick={() => console.log('sdfsfd')}>单据信息</Item>
-        </List>
+        <Accordion>
+          <Accordion.Panel header="单据信息">
+            <List className="my-list">
+              <Item arrow="horizontal" multipleLine onClick={() => console.log('sdfsfd')}></Item>
+            </List>
+          </Accordion.Panel>
+        </Accordion>
           <WhiteSpace size="sm"/>
         <List>
           <Item multipleLine style={{ fontWeight: 'bold' }}>产品信息</Item>

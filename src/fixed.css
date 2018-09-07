@@ -124,3 +124,15 @@
     border:0 !important;
 }
 
+.list-item{
+  display: flex;
+}
+.list-item .list-item-label{
+  width: 240px;
+}
+.list-item .list-item-info{
+  width: 100%;
+}
+.list-center-item .am-list-line .am-list-content{
+  text-align: center !important;
+}

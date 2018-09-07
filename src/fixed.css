@@ -56,7 +56,14 @@
   color:red;
 }
 .scrollList {
-
+  padding:0;
+  margin: 0;
+}
+.scrollList-title{
+  margin: 20px 0 0;
+  padding: 0 12px;
+  height: 36px;
+  line-height: 36px;
 }
 .scrollList-item{
   padding:12px;
@@ -71,5 +78,36 @@
 }
 .scrollList-item .am-flexbox span{
   margin-left: 8px;
+}
+.grid{
+  padding:20px;
+}
+.grid>div{
+  text-align:left;
+}
+.grid-gap{
+  margin-bottom:15px;
+}
+.grid-label{
+  width:20%;
+  display:inline-block;
+}
+.grid-content-inline{
+  width:17%;
+  margin-left:3%;
+}
+.grid-content-noneLabel{
+  width:20%;
+}
+.scrollList-item  .am-list-item .am-input-control input{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.scrollList-item .am-list-item.am-input-item{
+  padding-left:0 !important;
+}
+
+.scrollList-item .am-list-line:after{
+    background:none !important;
 }
 

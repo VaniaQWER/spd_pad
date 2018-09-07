@@ -59,6 +59,12 @@ export const getNavData = app => [
       component: dynamicWrapper(app, [], () => import('../routes/inventory'))
     },
     {
+      name: "盘点-药品信息",
+      icon: 'inventory',
+      path: '/inventory/listInfo',
+      component: dynamicWrapper(app, [], () => import('../routes/inventory/list'))
+    },
+    {
       name: "盘点详情",
       icon: 'inventory',
       path: '/inventory/detail',

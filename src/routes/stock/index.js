@@ -3,7 +3,7 @@ import { Button } from 'antd-mobile'
 class Stock extends PureComponent {
   render() {
     return (
-      <Button>库存查询</Button>
+      <Button type='primary'>库存查询</Button>
     )
   }
 }

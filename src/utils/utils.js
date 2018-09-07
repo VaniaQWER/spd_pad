@@ -1,6 +1,6 @@
 import querystring from 'querystring';
-import {_local} from '../api/local';
-import {message} from 'antd';
+import { Toast } from 'antd-mobile';
+
 export function getPlainNode(nodeList, parentPath = '') {
   const arr = [];
   nodeList.forEach((node) => {
@@ -36,7 +36,7 @@ export const CommonData = (type, cb, params={}, url) => {
   if(localStorage.getItem(type)) {
     cb(JSON.parse(localStorage.getItem(type)));
   } else {
-    fetch(url || `${_local}/staticData/commonData?type=` + type, {
+    fetch(url || `/staticData/commonData?type=` + type, {
       credentials: 'include',
       method: 'post',
       headers: {
@@ -152,13 +152,13 @@ export const validAmount = (value, max) => {
   let num = Number(value);
   if (/^\d+$/.test(num) && num !== 0) {
     if (num > max) {
-      message.error('超过库存上限');
+      Toast.error('超过库存上限');
       return false;
     }else{
       return true;
     }
   }else {
-    message.error('请输入非0正整数！');
+    Toast.error('请输入非0正整数！');
     return false;
   }
 }

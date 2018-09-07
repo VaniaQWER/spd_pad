@@ -6,7 +6,7 @@ class BlankLayout extends PureComponent {
   render() {
     const { getRouteData } = this.props;
     return (
-      <div className={`${styles.content}`}>
+      <div>
         <Switch>
           <Redirect from="/" to="/login" exact={true}/>
           {

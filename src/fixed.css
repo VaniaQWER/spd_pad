@@ -45,8 +45,15 @@
 	animation-fill-mode: forwards;
 }
 
-.bgf{
-  background:red
+/*  公用列表样式 */
+.fr{
+  float:right;
+}
+.mr-middle{
+  margin-right:8px;
+}
+.text-danger{
+  color:red;
 }
 .scrollList {
 
@@ -62,3 +69,7 @@
   min-height:24px;
   line-height:24px;
 }
+.scrollList-item .am-flexbox span{
+  margin-left: 8px;
+}
+

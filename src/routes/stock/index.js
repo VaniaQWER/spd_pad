@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { NavBar, Icon , SearchBar , Tabs , Flex} from 'antd-mobile';
+import { NavBar, Icon , SearchBar , Tabs , Flex , Card} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
 function renderTabBar(props) {
@@ -19,6 +19,14 @@ class Stock extends PureComponent {
     searchName: '',
   }
 
+  clickTab = (tab,index)=>{
+    console.log(tab,index)
+  }
+
+  toDetail = (id)=>{
+    const { history } = this.props;
+    history.push('/stock/detail')
+  }
   render() {
     const { url , searchName } = this.state;
     return (
@@ -49,9 +57,39 @@ class Stock extends PureComponent {
             tabs={tabs}
             initalPage={'t1'}
             renderTabBar={renderTabBar}
+            onTabClick={this.clickTab}
             >
               <div style={{height:'70vh' , backgroundColor: '#fff' }}>
-                <ul className='scrollList' style={{margin: 0,padding: 0}}>
+                <ListViewScroll 
+                  url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                  queryParams={{
+                    searchParam: searchName
+                  }}
+                  method="GET"
+                  item={item => {
+                    console.log(item)
+                    return (
+                      <Card  full  className='scrollList-item' key={item.id} onClick={()=>this.toDetail(item.id)}>
+                        <Card.Header
+                          title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                          extra={<span className='fr text-danger'>近效期</span>}
+                        />
+                        <Card.Body>
+                          <Flex>
+                            <Flex.Item>单位 :<span>{item.distributionNo}</span></Flex.Item>
+                            <Flex.Item>规格 :<span>{item.date}</span></Flex.Item>
+                          </Flex>
+                          <Flex>
+                            <Flex.Item>数量 :<span>{item.total}</span></Flex.Item>
+                            <Flex.Item>近效期数量 :<span className='text-danger'>{item.total}</span></Flex.Item>
+                          </Flex>
+                        </Card.Body>
+                      </Card>
+                    )
+                  }}
+                />
+              </div>
+              <div style={{height:'70vh' , backgroundColor: '#fff' }}>
                   <ListViewScroll 
                     url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
                     queryParams={{
@@ -61,28 +99,28 @@ class Stock extends PureComponent {
                     item={item => {
                       console.log(item)
                       return (
-                        <li className='scrollList-item' key={item.id}>
-                          <div className="sub-title">{item.supplierName}</div>
-                          <Flex>
-                            <Flex.Item>单位:123</Flex.Item>
-                            <Flex.Item>规格:1212313</Flex.Item>
-                          </Flex>
-                          <Flex>
-                            <Flex.Item>数量:123</Flex.Item>
-                            <Flex.Item>近效期数量:1212313</Flex.Item>
-                          </Flex>
-                        </li>
+                        <Card  full  className='scrollList-item' key={item.id}>
+                          <Card.Header
+                            title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                            extra={<span className='fr text-danger'>近效期</span>}
+                          />
+                          <Card.Body>
+                            <Flex>
+                              <Flex.Item>单位 :<span>{item.distributionNo}</span></Flex.Item>
+                              <Flex.Item>规格 :<span>{item.date}</span></Flex.Item>
+                            </Flex>
+                            <Flex>
+                              <Flex.Item>数量 :<span>{item.total}</span></Flex.Item>
+                              <Flex.Item>近效期数量 :<span className='text-danger'>{item.total}</span></Flex.Item>
+                            </Flex>
+                          </Card.Body>
+                        </Card>
                       )
                     }}
                   />
-                </ul>
-              </div>
-              <div style={{height:'70vh' , backgroundColor: '#fff' }}>
-                Content of second tab
               </div>
           </Tabs>
         </StickyContainer>
-
       </div>
     )
   }

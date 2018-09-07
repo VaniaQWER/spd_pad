@@ -148,7 +148,6 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
         renderRow={row}
         style={{
           minHeight: 'calc(100vh - 5px)',
-          margin: '5px 0',
           overflowX: 'hidden'
         }}
         // renderSeparator={separator}

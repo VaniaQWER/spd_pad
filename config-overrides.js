@@ -42,6 +42,7 @@ module.exports = function override(config, env) {
           options: {
             // theme vars, also can use theme.js instead of this.
             modifyVars: { "@brand-primary": "#f2a11c" },
+            javascriptEnabled: true
           },
         },
       ]

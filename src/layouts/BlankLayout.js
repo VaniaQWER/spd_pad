@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Route, Switch, Redirect } from 'dva/router';
 import { connect } from 'dva';
-import styles from './style.css';
 class BlankLayout extends PureComponent {
   render() {
     const { getRouteData } = this.props;

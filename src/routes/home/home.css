@@ -1,0 +1,19 @@
+.grid_item {
+  padding: 12px
+}
+
+.grid_item_desc {
+  margin-top: 10px;
+}
+
+.item_title {
+  padding: 0 20px;
+  height: 36px;
+  background: #fff;
+}
+
+.item_title_line {
+  border-left: 6px solid #f2a11c;
+  height: 100%;
+  padding: 6px;
+}

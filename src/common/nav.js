@@ -17,6 +17,12 @@ export const getNavData = app => [
   name: '首页',
   children: [
     {
+      name: "首页",
+      icon: 'home',
+      path: '/home',
+      component: dynamicWrapper(app, [], () => import('../routes/home'))
+    },
+    {
       name: "验收",
       icon: 'acceptance',
       path: '/acceptance/list',
@@ -87,6 +93,18 @@ export const getNavData = app => [
       icon: 'stock',
       path: '/stock/detail',
       component: dynamicWrapper(app, [], () => import('../routes/stock/detail'))
+    },
+    {
+      name: "账号",
+      icon: 'profile',
+      path: '/profile',
+      component: dynamicWrapper(app, [], () => import('../routes/profile'))
+    },
+    {
+      name: "提醒",
+      icon: 'message',
+      path: '/message/:id',
+      component: dynamicWrapper(app, [], () => import('../routes/message/detail'))
     }
   ]
 }]

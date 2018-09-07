@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { NavBar, Icon , SearchBar , Tabs } from 'antd-mobile';
+import { NavBar, Icon , SearchBar , Tabs , Flex} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
 function renderTabBar(props) {
@@ -51,7 +51,7 @@ class Stock extends PureComponent {
             renderTabBar={renderTabBar}
             >
               <div style={{height:'70vh' , backgroundColor: '#fff' }}>
-                <ul style={{margin: 0,padding: 0}}>
+                <ul className='scrollList' style={{margin: 0,padding: 0}}>
                   <ListViewScroll 
                     url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
                     queryParams={{
@@ -60,12 +60,24 @@ class Stock extends PureComponent {
                     method="GET"
                     item={item => {
                       console.log(item)
-                      return <li key={item.id} style={{height:50}}>{item.supplierName}</li>
+                      return (
+                        <li className='scrollList-item' key={item.id}>
+                          <div className="sub-title">{item.supplierName}</div>
+                          <Flex>
+                            <Flex.Item>单位:123</Flex.Item>
+                            <Flex.Item>规格:1212313</Flex.Item>
+                          </Flex>
+                          <Flex>
+                            <Flex.Item>数量:123</Flex.Item>
+                            <Flex.Item>近效期数量:1212313</Flex.Item>
+                          </Flex>
+                        </li>
+                      )
                     }}
                   />
                 </ul>
               </div>
-              <div style={{ display: 'flex' , height:'70vh' , backgroundColor: '#fff' }}>
+              <div style={{height:'70vh' , backgroundColor: '#fff' }}>
                 Content of second tab
               </div>
           </Tabs>

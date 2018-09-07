@@ -135,7 +135,7 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
           borderTop: '1px solid #ECECED',
           borderBottom: '1px solid #ECECED',
         }}
-      />
+      /> 
     );
     return (
       <ListView
@@ -148,12 +148,10 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
         renderRow={row}
         style={{
           minHeight: 'calc(100vh - 5px)',
-
-          border: '1px solid #ddd',
           margin: '5px 0',
           overflowX: 'hidden'
         }}
-        renderSeparator={separator}
+        // renderSeparator={separator}
         pullToRefresh={<PullToRefresh
           refreshing={this.state.refreshing}
           onRefresh={this.onRefresh}

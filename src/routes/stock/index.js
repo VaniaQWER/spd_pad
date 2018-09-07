@@ -50,8 +50,8 @@ class Stock extends PureComponent {
             initalPage={'t1'}
             renderTabBar={renderTabBar}
             >
-              <div style={{ display: 'flex', height:'70vh' , backgroundColor: '#fff' }}>
-                <ul>
+              <div style={{height:'70vh' , backgroundColor: '#fff' }}>
+                <ul style={{margin: 0,padding: 0}}>
                   <ListViewScroll 
                     url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
                     queryParams={{
@@ -60,7 +60,7 @@ class Stock extends PureComponent {
                     method="GET"
                     item={item => {
                       console.log(item)
-                      return <li key={item.id}>{item.supplierName}</li>
+                      return <li key={item.id} style={{height:50}}>{item.supplierName}</li>
                     }}
                   />
                 </ul>

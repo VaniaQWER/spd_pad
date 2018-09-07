@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from 'react';
-import { NavBar, Icon , SearchBar , Tabs , Flex , Card , InputItem , Button} from 'antd-mobile';
+import { NavBar, Icon , SearchBar , Tabs , Flex , Card , Button} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
 import { createForm } from 'rc-form';
@@ -35,7 +35,7 @@ class UndercarriageDetail extends PureComponent {
   }
 
   render() {
-    const { getFieldProps } = this.props.form;
+    // const { getFieldProps } = this.props.form;
     const { searchName } = this.state;
     return (
       <div>

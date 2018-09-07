@@ -91,7 +91,7 @@ class Stock extends PureComponent {
                           <Flex>
                             <Flex.Item>
                             {
-                              item.index==1?
+                              item.index===1?
                               (
                                 <InputItem
                                   {...getFieldProps('number')}
@@ -104,7 +104,7 @@ class Stock extends PureComponent {
                           </Flex>
                           
                           {
-                            item.index==1?
+                            item.index===1?
                             (
                               <div>
                                 <Flex>

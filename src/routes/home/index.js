@@ -46,7 +46,7 @@ class HomePage extends PureComponent {
   render() {
     const { history } = this.props;
     return (
-      <div style={{height: '100vh'}}>
+      <div style={{height: '100vh',overflow: 'hidden'}}>
         <NavBar
           rightContent={[
             <img 
@@ -80,8 +80,9 @@ class HomePage extends PureComponent {
         <WhiteSpace />
         <Card>
           <Card.Header title={<div className={styles.item_title_line}>提醒消息</div>}/>
-          <Card.Body style={{height:'46vh',overflowY: 'scroll'}}>
+          <Card.Body>
           <ListViewScroll 
+            style={{height:'58vh',overflow:'scroll'}}
             url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/message`}
             queryParams={{
               searchParam: ''

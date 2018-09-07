@@ -148,7 +148,8 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
           {this.state.isLoading ? '加载中...' : '加载完成'}
         </div>)}
         renderRow={row}
-        style={{
+        style={
+          this.props.style ? this.props.style : {
           minHeight: 'calc(100vh - 5px)',
           overflowX: 'hidden'
         }}

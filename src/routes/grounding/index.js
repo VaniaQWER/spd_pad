@@ -1,6 +1,5 @@
-
 import React, { PureComponent } from 'react';
-import { NavBar, Icon, SearchBar, Tabs, Card, Flex } from 'antd-mobile';
+import { NavBar, Icon, SearchBar, Tabs, Card, Flex, Button } from 'antd-mobile';
 import { connect } from 'dva';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { _local } from '../../api/local'
@@ -13,8 +12,8 @@ const renderTabBar = (props)=>{
 }
 
 const tabs = [
-  { title: '待拣货' },
-  { title: '已拣货' },
+  { title: '待上架' },
+  { title: '已上架' },
 ];
 
 class Grounding extends PureComponent {
@@ -22,9 +21,14 @@ class Grounding extends PureComponent {
     url: '',
     searchName: '',
   }
+  detail = (id) =>{
+    this.props.history.push({ pathname: `/grounding/detail/${id}` })
+  }
+  passGrounding = () =>{
+    this.props.history.push({ pathname: '/result/success' });
+  }
   render() {
     const { searchName } = this.state;
-    const { history } = this.props;
     return (
       <div>
         <NavBar
@@ -35,10 +39,10 @@ class Grounding extends PureComponent {
           ]}
           onLeftClick={() => console.log('onLeftClick')}
           >
-          拣货下架
+          药品信息
         </NavBar>
         <SearchBar
-          placeholder="下架单号"
+          placeholder="通用名/商品名/生产厂家"
           onSubmit={value => console.log(value, 'onSubmit')}
           onClear={value => console.log(value, 'onClear')}
           onFocus={() => console.log('onFocus')}
@@ -61,17 +65,28 @@ class Grounding extends PureComponent {
                 method="GET"
                 item={item => {
                   return (
-                  <Card full className='scrollList-item' onClick={() => history.push({ pathname: `/acceptance/detail/${item.id}/${item.index}` })}>
+                  <Card full className='scrollList-item'>
                     <Card.Header
-                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{` 拣货单号： ${item.id}`}</span>}
-                      extra={<span>{ ` 待拣货  ${item.type}`}</span>}
+                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                      extra={<span>{'待上架'}</span>}
                     />
                     <Card.Body>
                       <Flex>
-                        <Flex.Item> 发起时间：<span>{item.date}</span> </Flex.Item>
-                        <Flex.Item> 品相数：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 单位：<span>{item.replanUnit}</span> </Flex.Item>
+                        <Flex.Item> 货位：<span>{item.goodPlace}</span> </Flex.Item>
+                      </Flex>
+                      <Flex>
+                        <Flex.Item> 数量：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 规格：<span>{item.spec}</span> </Flex.Item>
+                      </Flex>
+                      <Flex>
+                        <Flex.Item> 生产厂家：<span>{item.producter}</span> </Flex.Item>
                       </Flex>
                     </Card.Body>
+                    <Card.Footer extra={<div>
+                      <Button type='default' size='small' inline onClick={()=> this.detail(item.id)}>更多详情</Button>
+                      <Button type='primary' size='small' inline style={{ marginLeft: 8 }} onClick={this.passGrounding}>确认上架</Button>
+                    </div>} />
                   </Card>)
                 }}
               />
@@ -86,17 +101,27 @@ class Grounding extends PureComponent {
                 method="GET"
                 item={item => {
                   return (
-                  <Card full className='scrollList-item' onClick={() => history.push({ pathname: `/acceptance/detail/${item.id}/${item.index}` })}>
+                  <Card full className='scrollList-item'>
                     <Card.Header
-                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{` 拣货单号： ${item.id}`}</span>}
-                      extra={<span>{ ` 已拣货  ${item.type}`}</span>}
+                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                      extra={<span>{'已上架'}</span>}
                     />
                     <Card.Body>
                       <Flex>
-                        <Flex.Item> 发起时间：<span>{item.date}</span> </Flex.Item>
-                        <Flex.Item> 品相数：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 单位：<span>{item.replanUnit}</span> </Flex.Item>
+                        <Flex.Item> 货位：<span>{item.goodPlace}</span> </Flex.Item>
+                      </Flex>
+                      <Flex>
+                        <Flex.Item> 数量：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 规格：<span>{item.spec}</span> </Flex.Item>
+                      </Flex>
+                      <Flex>
+                        <Flex.Item> 生产厂家：<span>{item.producter}</span> </Flex.Item>
                       </Flex>
                     </Card.Body>
+                    <Card.Footer extra={<div>
+                      <Button type='default' size='small' inline>更多详情</Button>
+                    </div>} />
                   </Card>)
                 }}
               />

@@ -2,7 +2,7 @@
  * @Author: wwb 
  * @Date: 2018-09-07 18:47:11 
  * @Last Modified by: wwb
- * @Last Modified time: 2018-09-08 01:11:36
+ * @Last Modified time: 2018-09-08 02:08:27
  * 
  * 验收详情
  */
@@ -80,7 +80,6 @@ class AcceptanceDetail extends PureComponent {
     this.setState({ index: index >=0 ? index: 0 })
   }
   render() {
-    const { history, form } = this.props;
     const { index, detailsData, amount, disabled } = this.state;
     return (
       <div>

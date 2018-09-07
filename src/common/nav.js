@@ -43,7 +43,7 @@ export const getNavData = app => [
     {
       name: "上架详情",
       icon: 'grounding',
-      path: '/grounding/detail',
+      path: '/grounding/detail/:id',
       component: dynamicWrapper(app, [], () => import('../routes/grounding/detail'))
     },
     {
@@ -105,6 +105,12 @@ export const getNavData = app => [
       icon: 'message',
       path: '/message/:id',
       component: dynamicWrapper(app, [], () => import('../routes/message/detail'))
+    },
+    {
+      name: "结果",
+      icon: 'result',
+      path: '/result/:result',
+      component: dynamicWrapper(app, [], () => import('../routes/Result'))
     }
   ]
 }]

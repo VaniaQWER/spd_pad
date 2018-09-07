@@ -61,6 +61,7 @@
 }
 .scrollList .am-card-body{
   position: initial;
+  padding: 5px 15px 6px;
 }
 .scrollList-title{
   margin: 20px 0 0;

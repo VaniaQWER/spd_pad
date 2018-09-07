@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { NavBar, Icon, List, WhiteSpace, Radio } from 'antd-mobile';
+import { NavBar, Icon, List, Radio } from 'antd-mobile';
 const Item = List.Item;
 const RadioItem = Radio.RadioItem;
 const data = [

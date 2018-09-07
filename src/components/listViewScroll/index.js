@@ -34,10 +34,11 @@ class ListViewScroll extends PureComponent {
         page: pIndex + 1,
         ...this.state.queryParams
       },
-      type:'formData'
+      type:'formData',
+      method:this.props.method || 'POST'
     });
 
-    const data = promiseData.result.rows || promiseData.result;
+    const data = promiseData.data ||promiseData.result.rows || promiseData.result ;
     for (let i = 0; i < data.length ; i++) {
       dataArr.push(`row - ${(pIndex * NUM_ROWS) + i}`);
     }

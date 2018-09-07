@@ -136,3 +136,13 @@
 .list-center-item .am-list-line .am-list-content{
   text-align: center !important;
 }
+/* nav Header 上一个 下一个 */
+.navHeader_btn{
+  display: flex;
+  align-items: center;
+}
+.navHeader_btn_disabled{
+  display: flex;
+  align-items: center;
+  color: #ccc;
+}

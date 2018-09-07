@@ -1,4 +1,9 @@
-/* 盘点列表 */
+/*
+ * @Author: yuwei 盘点列表 - 药品信息
+ * @Date: 2018-09-08 01:08:43 
+* @Last Modified time: 2018-09-08 01:08:43 
+ */
+
 import React, { PureComponent } from 'react';
 import { NavBar, Icon , SearchBar , Tabs , Flex , Card , InputItem , Button} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';

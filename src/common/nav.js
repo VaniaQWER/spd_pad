@@ -53,6 +53,12 @@ export const getNavData = app => [
       component: dynamicWrapper(app, [], () => import('../routes/undercarriage/detail'))
     },
     {
+      name: "拣货下架详情",
+      icon: 'undercarriage',
+      path: '/undercarriage/detailInfo',
+      component: dynamicWrapper(app, [], () => import('../routes/undercarriage/detailInfo'))
+    },
+    {
       name: "盘点",
       icon: 'inventory',
       path: '/inventory/list',

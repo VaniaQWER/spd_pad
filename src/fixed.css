@@ -119,7 +119,7 @@
   padding-left:0 !important;
 }
 
-.scrollList-item .am-list-line:after,.am-list-body div:not(:last-child) .am-list-line{
+.am-list-line:after,.scrollList-item .am-list-line:after,.am-list-body div:not(:last-child) .am-list-line{
     background:none !important;
     border:0 !important;
 }

@@ -10,7 +10,7 @@ class Invertory extends PureComponent {
   }
   toDetail = (id)=>{
     const { history } = this.props;
-    history.push('/stock/detail')
+    history.push('/inventory/listInfo')
   }
   onClose = key => () => {
     this.setState({

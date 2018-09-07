@@ -28,7 +28,7 @@ class Stock extends PureComponent {
 
   toDetail = (id)=>{
     const { history } = this.props;
-    history.push('/stock/detail')
+    history.push('/inventory/detail')
   }
   render() {
     const { getFieldProps } = this.props.form;
@@ -131,7 +131,7 @@ class Stock extends PureComponent {
                           <hr className='hr'/>
                           <Flex justify='end'>
                             <Button inline  size="small" className='button-gap'>{item.index===1?`收起编辑`:`展开编辑`}</Button>
-                            <Button inline  size="small" className='button-gap'>更多详情</Button>
+                            <Button inline  size="small" className='button-gap' onClick={this.toDetail}>更多详情</Button>
                             <Button inline  size="small" className='button-gap' type="primary">提交</Button>
                           </Flex>
                         </Card.Body>

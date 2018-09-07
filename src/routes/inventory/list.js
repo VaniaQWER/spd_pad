@@ -1,6 +1,6 @@
 /* 盘点列表 */
 import React, { PureComponent } from 'react';
-import { NavBar, Icon , SearchBar , Tabs , Flex , Card , InputItem } from 'antd-mobile';
+import { NavBar, Icon , SearchBar , Tabs , Flex , Card , InputItem , Button} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
 import { createForm } from 'rc-form';
@@ -32,7 +32,7 @@ class Stock extends PureComponent {
   }
   render() {
     const { getFieldProps } = this.props.form;
-    const { url , searchName } = this.state;
+    const { searchName } = this.state;
     return (
       <div>
         {/* 导航栏 */}
@@ -76,7 +76,7 @@ class Stock extends PureComponent {
                       <Card  full  className='scrollList-item' key={item.id}>
                         <Card.Header
                           title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
-                          extra={<span className='fr text-danger'>近效期</span>}
+                          extra={<span className='fr'>-1  未提交</span>}
                         />
                         <Card.Body>
                           <Flex>
@@ -107,15 +107,20 @@ class Stock extends PureComponent {
                             </Flex.Item>
                           </Flex>
                           <Flex>
-                          <Flex.Item>
-                              <InputItem
-                                {...getFieldProps('number')}
-                                type="number"
-                              >有效期至 :</InputItem>
-                          </Flex.Item>
-                          <Flex.Item>生产厂家 :<span>浙江安宝药业有限公司</span></Flex.Item>
-                        </Flex>
-
+                            <Flex.Item>
+                                <InputItem
+                                  {...getFieldProps('number')}
+                                  type="number"
+                                >有效期至 :</InputItem>
+                            </Flex.Item>
+                            <Flex.Item>生产厂家 :<span>浙江安宝药业有限公司</span></Flex.Item>
+                          </Flex>
+                          <hr className='hr'/>
+                          <Flex justify='end'>
+                            <Button inline  size="small" className='button-gap'>收起编辑</Button>
+                            <Button inline  size="small" className='button-gap'>更多详情</Button>
+                            <Button inline  size="small" className='button-gap' type="primary">提交</Button>
+                          </Flex>
                         </Card.Body>
                       </Card>
                     )

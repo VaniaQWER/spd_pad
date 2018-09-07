@@ -122,6 +122,7 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
         index = data.length - 1;
       } 
       const obj = data[index--];
+      obj.index = Number(rowID) + 1;
       return (
         <this.props.item {...obj}/>
       );
@@ -131,8 +132,9 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
         key={`${sectionID}-${rowID}`}
         style={{
           backgroundColor: '#F5F5F9',
-          height: 8,
-          borderTop: '1px solid #ECECED',
+          // height: 8,
+          height: 1,
+          // borderTop: '1px solid #ECECED',
           borderBottom: '1px solid #ECECED',
         }}
       /> 
@@ -150,7 +152,7 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
           minHeight: 'calc(100vh - 5px)',
           overflowX: 'hidden'
         }}
-        // renderSeparator={separator}
+        renderSeparator={this.props.separator ? separator: null }
         pullToRefresh={<PullToRefresh
           refreshing={this.state.refreshing}
           onRefresh={this.onRefresh}

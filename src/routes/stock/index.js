@@ -28,7 +28,7 @@ class Stock extends PureComponent {
     history.push('/stock/detail')
   }
   render() {
-    const { url , searchName } = this.state;
+    const { searchName } = this.state;
     return (
       <div>
         {/* 导航栏 */}

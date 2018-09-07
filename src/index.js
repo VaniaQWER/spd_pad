@@ -16,6 +16,6 @@ const app = dva();
 // app.model(require('./models/socket').default);
 // 4. Router
 app.router(require('./router').default);
-
+app.model(require('./models/base').default);
 // 5. Start
 app.start('#root');

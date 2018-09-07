@@ -25,7 +25,7 @@ export const getNavData = app => [
     {
       name: "验收详情",
       icon: 'acceptance',
-      path: '/acceptance/detail',
+      path: '/acceptance/detail/:id/:index',
       component: dynamicWrapper(app, [], () => import('../routes/acceptance/detail'))
     },
     {

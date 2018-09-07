@@ -73,8 +73,8 @@
   margin-bottom:8px;
 }
 .scrollList-item .am-flexbox{
-  min-height:24px;
-  line-height:24px;
+  min-height:30px;
+  line-height:30px;
 }
 .scrollList-item .am-flexbox span{
   margin-left: 8px;
@@ -87,6 +87,15 @@
 }
 .grid-gap{
   margin-bottom:15px;
+}
+.hr{
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+}
+.button-gap{
+  margin-left:4px;
+  margin-right:4px;
 }
 .grid-label{
   width:20%;

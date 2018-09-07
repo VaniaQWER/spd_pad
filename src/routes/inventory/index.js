@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { NavBar, Icon , Flex , Modal, List, Button, WhiteSpace, Tag , InputItem , DatePicker} from 'antd-mobile';
+import { NavBar, Icon , Flex , Modal, List, Button, Tag , InputItem , DatePicker} from 'antd-mobile';
 import ListViewScroll from '../../components/listViewScroll';
 class Invertory extends PureComponent {
 
@@ -27,7 +27,7 @@ class Invertory extends PureComponent {
     console.log(selected)
   }
   render() {
-    const { url , searchName } = this.state;
+    const { searchName } = this.state;
     return (
       <div>
         {/* 导航栏 */}

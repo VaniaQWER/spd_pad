@@ -90,7 +90,7 @@ class Undercarriage extends PureComponent {
                             extra={<span >零库存补货  待拣货</span>}
                           />
                           <Card.Body>
-                            <Flex>
+                            <Flex style={{ color: '#555' }}>
                               <Flex.Item>发起时间 :<span>{item.date }</span></Flex.Item>
                               <Flex.Item>品项数 :<span>{item.total}</span></Flex.Item>
                             </Flex>

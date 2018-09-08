@@ -160,7 +160,7 @@ UNSAFE_componentWillReceiveProps =(nextProps) =>{
         />}
         scrollRenderAheadDistance={500}
         onEndReached={this.onEndReached}
-        onEndReachedThreshold={10}
+        onEndReachedThreshold={1000}
         pageSize={4}
       />
     );

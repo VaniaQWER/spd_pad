@@ -7,7 +7,7 @@ class BlankLayout extends PureComponent {
     return (
       <div>
         <Switch>
-          <Redirect from="/" to="/login" exact={true}/>
+          <Redirect from="/" to="/home" exact={true}/>
           {
             getRouteData('BlankLayout').map(item =>
               (

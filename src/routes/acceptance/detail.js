@@ -2,7 +2,7 @@
  * @Author: wwb 
  * @Date: 2018-09-07 18:47:11 
  * @Last Modified by: wwb
- * @Last Modified time: 2018-09-08 02:08:27
+ * @Last Modified time: 2018-09-08 10:15:08
  * 
  * 验收详情
  */
@@ -81,20 +81,21 @@ class AcceptanceDetail extends PureComponent {
   }
   render() {
     const { index, detailsData, amount, disabled } = this.state;
+    const { history } = this.props;
     return (
       <div>
         {/* <div className='ysysnt_detail_content'>
           <ActivityIndicator animating={animating} text='正在努力加载中......'/>
         </div> */}
         <NavBar
-          mode="light"
+          mode="dark"
           leftContent ={[
             <a key='0' className='navHeader_btn'>
               <Icon key="0" type="left" style={{ marginRight: '10px' }} />
               <span key="1">返回</span>
             </a>
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >
           验收详情
         </NavBar>

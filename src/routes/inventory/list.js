@@ -8,6 +8,7 @@ import React, { PureComponent } from 'react';
 import { NavBar, Icon , SearchBar , Tabs , Flex , Card , InputItem , Button} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
+import { connect } from 'dva';
 import { createForm } from 'rc-form';
 
 function renderTabBar(props) {
@@ -37,6 +38,7 @@ class Stock extends PureComponent {
   }
   render() {
     const { getFieldProps } = this.props.form;
+    const { history } = this.props;
     const { searchName } = this.state;
     return (
       <div>
@@ -47,7 +49,7 @@ class Stock extends PureComponent {
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>,
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >药品信息</NavBar>
 
         {/* 搜索栏 */}
@@ -182,4 +184,4 @@ class Stock extends PureComponent {
   }
 }
 
-export default createForm()(Stock);
+export default connect(state => state)(createForm()(Stock));

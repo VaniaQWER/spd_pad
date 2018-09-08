@@ -38,16 +38,17 @@ class Undercarriage extends PureComponent {
   }
   render() {
     const { searchName , showHistory} = this.state;
+    const { history } = this.props;
     return (
       <div>
         {/* 导航栏 */}
         <NavBar
-          mode="light"
+          mode="dark"
           leftContent={[
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>,
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >拣货下架</NavBar>
 
        
@@ -80,7 +81,6 @@ class Undercarriage extends PureComponent {
                     }}
                     method="GET"
                     item={item => {
-                      console.log(item)
                       return (
                         <Card  full  className='scrollList-item' key={item.id} onClick={()=>this.toDetail(item.id)}>
                           <Card.Header
@@ -104,7 +104,6 @@ class Undercarriage extends PureComponent {
                     }}
                     method="GET"
                     item={item => {
-                      console.log(item)
                       return (
                         <Card  full  className='scrollList-item' key={item.id}>
                           <Card.Header

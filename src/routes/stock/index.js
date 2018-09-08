@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { NavBar, Icon , SearchBar , Tabs , Flex , Card} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
+import { connect } from 'dva';
 function renderTabBar(props) {
   return (<Sticky>
     {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
@@ -29,16 +30,17 @@ class Stock extends PureComponent {
   }
   render() {
     const { searchName } = this.state;
+    const { history } = this.props;
     return (
       <div>
         {/* 导航栏 */}
         <NavBar
-          mode="light"
+          mode="dark"
           leftContent={[
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>,
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >库存查询</NavBar>
 
         {/* 搜索栏 */}
@@ -66,7 +68,6 @@ class Stock extends PureComponent {
                   }}
                   method="GET"
                   item={item => {
-                    console.log(item)
                     return (
                       <Card  full  className='scrollList-item' key={item.id} onClick={()=>this.toDetail(item.id)}>
                         <Card.Header
@@ -122,4 +123,4 @@ class Stock extends PureComponent {
   }
 }
 
-export default Stock;
+export default connect(state => state)(Stock);

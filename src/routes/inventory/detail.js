@@ -58,6 +58,7 @@ class InvertoryDetail extends PureComponent {
    }
   render() {
     const { index, amount } = this.state;
+    const { history } = this.props;
     return (
       <div>
         {/* <div className='ysysnt_detail_content'>
@@ -69,7 +70,7 @@ class InvertoryDetail extends PureComponent {
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >
           详情
         </NavBar>

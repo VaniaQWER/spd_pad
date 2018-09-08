@@ -59,9 +59,11 @@
   padding:0;
   margin: 0;
 }
-.scrollList .am-card-body{
-  position: initial;
-  padding: 5px 15px 6px;
+.am-card-body{
+  padding: 6px 15px 6px !important;
+}
+html:not([data-scale]) .am-card-body::before{
+  background-color: #fff !important;
 }
 .scrollList-title{
   margin: 20px 0 0;

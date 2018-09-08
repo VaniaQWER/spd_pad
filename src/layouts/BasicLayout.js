@@ -10,7 +10,7 @@ class BasicLayout extends PureComponent {
     return (
       <div>
         <Switch>
-          <Redirect from="/" to="/login" exact={true}/>
+          <Redirect from="/" to="/home" exact={true}/>
           {
             getRouteData('BasicLayout').map(item =>
               (

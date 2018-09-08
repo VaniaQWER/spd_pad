@@ -58,18 +58,19 @@ class InvertoryDetail extends PureComponent {
   render() {
     // const { history, form } = this.props;
     const { index, } = this.state;//detailsData, amount 
+    const { history } = this.props;
     return (
       <div>
         {/* <div className='ysysnt_detail_content'>
           <ActivityIndicator animating={animating} text='正在努力加载中......'/>
         </div> */}
         <NavBar
-          mode="light"
+          mode="dark"
           leftContent ={[
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >
           详情
         </NavBar>

@@ -29,15 +29,16 @@ class Grounding extends PureComponent {
   }
   render() {
     const { searchName } = this.state;
+    const { history } = this.props;
     return (
       <div>
         <NavBar
-          mode="light"
+          mode="dark"
           leftContent ={[
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >
           药品信息
         </NavBar>

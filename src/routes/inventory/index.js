@@ -28,11 +28,12 @@ class Invertory extends PureComponent {
   }
   render() {
     const { searchName } = this.state;
+    const { history } = this.props;
     return (
       <div>
         {/* 导航栏 */}
         <NavBar
-          mode="light"
+          mode="dark"
           leftContent={[
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>,
@@ -40,7 +41,7 @@ class Invertory extends PureComponent {
           rightContent={(
             <span key="2" onClick={this.showModal('modal')}>新建盘点</span>
           )}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           onRig
           >盘点</NavBar>
 

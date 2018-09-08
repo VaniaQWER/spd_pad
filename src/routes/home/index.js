@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { WhiteSpace, Badge, Grid, NavBar, Card, Flex, List } from 'antd-mobile';
+import { WhiteSpace, Badge, Grid, NavBar, Card, List } from 'antd-mobile';
 import ListViewScroll from '../../components/listViewScroll';
 import styles from './home.css';
 const Item = List.Item;
@@ -50,6 +50,7 @@ class HomePage extends PureComponent {
         <NavBar
           rightContent={[
             <img 
+              key='1'
               alt=''
               src={require('../../assets/user.png')} 
               width={20} 

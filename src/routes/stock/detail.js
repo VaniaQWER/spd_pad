@@ -1,18 +1,20 @@
 import React, { PureComponent } from 'react';
 import { NavBar, Icon , Accordion, List , Flex} from 'antd-mobile';
+import { connect } from 'dva';
 
 class StockDetail extends PureComponent {
   render() {
+    const { history } = this.props;
     return (
       <div>
         {/* 导航栏 */}
         <NavBar
-        mode="light"
+        mode="dark"
         leftContent={[
           <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
           <span key="1">返回</span>,
         ]}
-        onLeftClick={() => console.log('onLeftClick')}
+        onLeftClick={() => history.go(-1)}
         >详情</NavBar>
 
         <Accordion accordion openAnimation={{}} className="my-accordion" onChange={this.onChange}>
@@ -303,4 +305,4 @@ class StockDetail extends PureComponent {
   }
 }
 
-export default StockDetail;
+export default connect(state => state)(StockDetail);

@@ -27,12 +27,12 @@ class Acceptance extends PureComponent {
     return (
       <div>
         <NavBar
-          mode="light"
+          mode="dark"
           leftContent ={[
             <Icon key="0" type="left" style={{ marginRight: '10px' }} />,
             <span key="1">返回</span>
           ]}
-          onLeftClick={() => console.log('onLeftClick')}
+          onLeftClick={() => history.go(-1)}
           >
         验收
         </NavBar>
@@ -79,9 +79,36 @@ class Acceptance extends PureComponent {
                 }}
               />
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff' }}>
-              Content of second tab
+            <div>
+              <ListViewScroll 
+                url={`${_local}/acceptanceList`}
+                queryParams={{
+                  searchParam: searchName
+                }}
+                separator={true}
+                method="GET"
+                item={item => {
+                  return (
+                  <Card full className='scrollList-item' onClick={() => history.push({ pathname: `/acceptance/detail/${item.id}/${item.index}` })}>
+                    <Card.Header
+                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                      extra={<span>{item.type}</span>}
+                    />
+                    <Card.Body>
+                      <Flex>
+                        <Flex.Item> 配送单号：<span>{item.distributionNo}</span> </Flex.Item>
+                        <Flex.Item> 品相数：<span>{item.total}</span> </Flex.Item>
+                      </Flex>
+                      <Flex>
+                        <Flex.Item> 计划单号：<span>{item.planNo}</span> </Flex.Item>
+                        <Flex.Item> 制单时间：<span>{item.date}</span> </Flex.Item>
+                      </Flex>
+                    </Card.Body>
+                  </Card>)
+                }}
+              />
             </div>
+            
           </Tabs>
         </StickyContainer>
       </div>

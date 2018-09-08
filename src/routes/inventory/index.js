@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { NavBar, Icon , Flex , Modal, List, Button, Tag , InputItem , DatePicker} from 'antd-mobile';
+import { NavBar, Icon , Flex , Modal, List, Button, Tag , InputItem , DatePicker, Card} from 'antd-mobile';
 import ListViewScroll from '../../components/listViewScroll';
 class Invertory extends PureComponent {
 
@@ -47,7 +47,7 @@ class Invertory extends PureComponent {
 
         {/* tab页切栏 */}
         <div style={{height:'70vh' , backgroundColor: '#fff' }}>
-          <h4 className='scrollList-title'>盘点记录</h4>
+          <h3 className='scrollList-title'>盘点记录</h3>
           <ul className='scrollList'>
               <ListViewScroll 
                 url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
@@ -56,21 +56,22 @@ class Invertory extends PureComponent {
                 }}
                 method="GET"
                 item={item => {
-                  console.log(item)
                   return (
-                    <li className='scrollList-item' onClick={()=>this.toDetail(item.id)}>
-                      <p className='sub-title'>
-                      <span style={{ fontSize: 14,color: '#333',fontWeight: 'bold' }}>盘点单号：{item.distributionNo}</span>
-                      <span className='fr'>明盘全盘   草稿</span>
-                      </p>
-                      <Flex>
-                        <Flex.Item>制单时间 :<span>{item.date }</span></Flex.Item>
-                        <Flex.Item>制单 :<span>{item.distributionNo}</span></Flex.Item>
-                      </Flex>
-                      <Flex>
-                        <Flex.Item>盘点时间 :<span>{item.date}</span></Flex.Item>
-                      </Flex>
-                    </li>
+                    <Card  full className='scrollList-item'>
+                      <Card.Header
+                        title={<span style={{ fontSize: 16, color: '#333',fontWeight: 'bold' }}>盘点单号：{item.distributionNo}</span>}
+                        extra={<span>明盘全盘   草稿</span>}
+                      />
+                      <Card.Body>
+                        <Flex>
+                          <Flex.Item>制单时间 :<span>{item.date }</span></Flex.Item>
+                          <Flex.Item>制单 :<span>{item.distributionNo}</span></Flex.Item>
+                        </Flex>
+                        <Flex>
+                          <Flex.Item>盘点时间 :<span>{item.date}</span></Flex.Item>
+                        </Flex>
+                      </Card.Body>
+                    </Card>
                   )
                 }}
               />

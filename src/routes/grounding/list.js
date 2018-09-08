@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
-import { NavBar, Icon, SearchBar, Tabs, Card, Flex } from 'antd-mobile';
+import { NavBar, Icon, SearchBar, Tabs, Card, Flex, Button, Modal } from 'antd-mobile';
 import { connect } from 'dva';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { _local } from '../../api/local'
 import ListViewScroll from '../../components/listViewScroll';
+const alert = Modal.alert;
 
 const renderTabBar = (props)=>{
   return (<Sticky>
@@ -12,14 +13,23 @@ const renderTabBar = (props)=>{
 }
 
 const tabs = [
-  { title: '待验收' },
-  { title: '已验收' },
+  { title: '待上架' },
+  { title: '已上架' },
 ];
 
-class Acceptance extends PureComponent {
+class Grounding extends PureComponent {
   state = {
     url: '',
     searchName: '',
+  }
+  detail = (id) =>{
+    this.props.history.push({ pathname: `/grounding/detail/${id}` })
+  }
+  passGrounding = () =>{
+    alert('确定', '是否确定上架???', [
+      { text: '取消', onPress: () => console.log('cancel') },
+      { text: '确认', onPress: () => this.props.history.push({ pathname: '/result/success' }) },
+    ]);
   }
   render() {
     const { searchName } = this.state;
@@ -34,10 +44,10 @@ class Acceptance extends PureComponent {
           ]}
           onLeftClick={() => history.go(-1)}
           >
-        验收
+          药品信息
         </NavBar>
         <SearchBar
-          placeholder="Search"
+          placeholder="通用名/商品名/生产厂家"
           onSubmit={value => console.log(value, 'onSubmit')}
           onClear={value => console.log(value, 'onClear')}
           onFocus={() => console.log('onFocus')}
@@ -50,9 +60,9 @@ class Acceptance extends PureComponent {
             initalPage={'t2'}
             renderTabBar={renderTabBar}
           >
-            <div>
+            <div className='scrollList'>
               <ListViewScroll 
-                url={`${_local}/acceptanceList`}
+                url={`${_local}/groundList`}
                 queryParams={{
                   searchParam: searchName
                 }}
@@ -60,28 +70,35 @@ class Acceptance extends PureComponent {
                 method="GET"
                 item={item => {
                   return (
-                  <Card full className='scrollList-item' onClick={() => history.push({ pathname: `/acceptance/list` })}>
+                  <Card full className='scrollList-item'>
                     <Card.Header
                       title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
-                      extra={<span>{item.type}</span>}
+                      extra={<span>{'待上架'}</span>}
                     />
                     <Card.Body>
                       <Flex>
-                        <Flex.Item> 配送单号：<span>{item.distributionNo}</span> </Flex.Item>
-                        <Flex.Item> 品相数：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 单位：<span>{item.replanUnit}</span> </Flex.Item>
+                        <Flex.Item> 货位：<span>{item.goodPlace}</span> </Flex.Item>
                       </Flex>
                       <Flex>
-                        <Flex.Item> 计划单号：<span>{item.planNo}</span> </Flex.Item>
-                        <Flex.Item> 制单时间：<span>{item.date}</span> </Flex.Item>
+                        <Flex.Item> 数量：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 规格：<span>{item.spec}</span> </Flex.Item>
+                      </Flex>
+                      <Flex>
+                        <Flex.Item> 生产厂家：<span>{item.producter}</span> </Flex.Item>
                       </Flex>
                     </Card.Body>
+                    <Card.Footer extra={<div>
+                      <Button type='default' size='small' inline onClick={()=> this.detail(item.id)}>更多详情</Button>
+                      <Button type='primary' size='small' inline style={{ marginLeft: 8 }} onClick={this.passGrounding}>确认上架</Button>
+                    </div>} />
                   </Card>)
                 }}
               />
             </div>
-            <div>
+            <div className='scrollList'>
               <ListViewScroll 
-                url={`${_local}/acceptanceList2`}
+                url={`${_local}/groundList2`}
                 queryParams={{
                   searchParam: searchName
                 }}
@@ -89,26 +106,31 @@ class Acceptance extends PureComponent {
                 method="GET"
                 item={item => {
                   return (
-                  <Card full className='scrollList-item' onClick={() => history.push({ pathname: `/acceptance/list` })}>
+                  <Card full className='scrollList-item'>
                     <Card.Header
                       title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
-                      extra={<span>{item.type}</span>}
+                      extra={<span>{'已上架'}</span>}
                     />
                     <Card.Body>
                       <Flex>
-                        <Flex.Item> 配送单号：<span>{item.distributionNo}</span> </Flex.Item>
-                        <Flex.Item> 品相数：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 单位：<span>{item.replanUnit}</span> </Flex.Item>
+                        <Flex.Item> 货位：<span>{item.goodPlace}</span> </Flex.Item>
                       </Flex>
                       <Flex>
-                        <Flex.Item> 计划单号：<span>{item.planNo}</span> </Flex.Item>
-                        <Flex.Item> 制单时间：<span>{item.date}</span> </Flex.Item>
+                        <Flex.Item> 数量：<span>{item.total}</span> </Flex.Item>
+                        <Flex.Item> 规格：<span>{item.spec}</span> </Flex.Item>
+                      </Flex>
+                      <Flex>
+                        <Flex.Item> 生产厂家：<span>{item.producter}</span> </Flex.Item>
                       </Flex>
                     </Card.Body>
+                    <Card.Footer extra={<div>
+                      <Button type='default' size='small' inline>更多详情</Button>
+                    </div>} />
                   </Card>)
                 }}
               />
             </div>
-            
           </Tabs>
         </StickyContainer>
       </div>
@@ -116,4 +138,4 @@ class Acceptance extends PureComponent {
   }
 }
 
-export default connect(state => state)(Acceptance) ;
+export default connect(state => state)(Grounding) ;

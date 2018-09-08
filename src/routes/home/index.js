@@ -10,13 +10,13 @@ const data = [
     uri: require('../../assets/icon_check_before_acceptance.png'),
     text: '验收',
     pending: 8,
-    route: '/acceptance/list'
+    route: '/acceptance'
   },
   {
     uri: require('../../assets/icon_grounding.png'),
     text: '上架',
     pending: 10,
-    route: '/grounding/list'
+    route: '/grounding'
   },
   {
     uri: require('../../assets/icon_lower_frame.png'),

@@ -25,8 +25,14 @@ export const getNavData = app => [
     {
       name: "验收",
       icon: 'acceptance',
-      path: '/acceptance/list',
+      path: '/acceptance',
       component: dynamicWrapper(app, [], () => import('../routes/acceptance'))
+    },
+    {
+      name: "验收",
+      icon: 'acceptance',
+      path: '/acceptance/list',
+      component: dynamicWrapper(app, [], () => import('../routes/acceptance/list'))
     },
     {
       name: "验收详情",
@@ -37,8 +43,14 @@ export const getNavData = app => [
     {
       name: "上架",
       icon: 'grounding',
-      path: '/grounding/list',
+      path: '/grounding',
       component: dynamicWrapper(app, [], () => import('../routes/grounding'))
+    },
+    {
+      name: "上架列表",
+      icon: 'grounding',
+      path: '/grounding/list',
+      component: dynamicWrapper(app, [], () => import('../routes/grounding/list'))
     },
     {
       name: "上架详情",

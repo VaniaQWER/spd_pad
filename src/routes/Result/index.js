@@ -2,7 +2,7 @@
  * @Author: gaofengjiao 
  * @Date: 2018-08-20 10:44:41 
  * @Last Modified by: wwb
- * @Last Modified time: 2018-09-08 11:54:47
+ * @Last Modified time: 2018-09-08 12:01:03
  * 建设中页面
  */
 import React, { PureComponent} from 'react';
@@ -27,7 +27,7 @@ class ResultInfo extends PureComponent{
           结果
         </NavBar>
         <Result
-          img={<Icon type="check-circle" size='lg' className="spe" style={{ fill: '#1F90E6', }} />}
+          img={<Icon type="check-circle" size='lg' className="spe" style={{ fill: '#f2a11c', }} />}
           title="上架成功"
           message={
             <div style={{ textAlign: 'center' }}>

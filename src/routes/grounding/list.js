@@ -28,7 +28,7 @@ class Grounding extends PureComponent {
   passGrounding = () =>{
     alert('确定', '是否确定上架???', [
       { text: '取消', onPress: () => console.log('cancel') },
-      { text: '确认', onPress: () => this.props.history.push({ pathname: '/result/success' }) },
+      { text: '确认', onPress: () => this.props.history.push({ pathname: '/result/success/grounding' }) },
     ]);
   }
   render() {

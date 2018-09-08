@@ -2,7 +2,7 @@
  * @Author: gaofengjiao 
  * @Date: 2018-08-20 10:44:41 
  * @Last Modified by: wwb
- * @Last Modified time: 2018-09-08 12:01:03
+ * @Last Modified time: 2018-09-08 16:06:26
  * 建设中页面
  */
 import React, { PureComponent} from 'react';
@@ -11,7 +11,8 @@ import { connect } from 'dva';
 import styles from './result.css';
 class ResultInfo extends PureComponent{
   render(){
-    const { result } = this.props.match.params;
+    const { result, type } = this.props.match.params;
+    const typeName = type === 'grounding'? ' 上架': type === 'acceptance'? "验收":'';
     const { history } = this.props;
     return(
       result ?
@@ -28,11 +29,11 @@ class ResultInfo extends PureComponent{
         </NavBar>
         <Result
           img={<Icon type="check-circle" size='lg' className="spe" style={{ fill: '#f2a11c', }} />}
-          title="上架成功"
+          title={`${typeName}成功`}
           message={
             <div style={{ textAlign: 'center' }}>
-                <p>上架单号: GD00015180700016ZJ</p>
-                <p>上架时间: 2018-07-19 09:41:42</p>
+                <p>{`${typeName}单号: GD00015180700016ZJ`}</p>
+                <p>{`${typeName}时间: 2018-07-19 09:41:42`}</p>
             </div>
           }
         />

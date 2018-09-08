@@ -130,7 +130,7 @@ class Acceptance extends PureComponent {
                         e.stopPropagation()
                         alert('确认提交', '是否执行此操作??', [
                           { text: '否', onPress: () => console.log('cancel') },
-                          { text: '是', onPress: () => history.push({ pathname: '/result/success' })},
+                          { text: '是', onPress: () => history.push({ pathname: '/result/success/acceptance' })},
                         ])
                       }
                       }>确认验收</Button>

@@ -127,7 +127,7 @@ export const getNavData = app => [
     {
       name: "结果",
       icon: 'result',
-      path: '/result/:result',
+      path: '/result/:result/:type',
       component: dynamicWrapper(app, [], () => import('../routes/Result'))
     }
   ]

@@ -17,8 +17,8 @@ class StockDetail extends PureComponent {
         onLeftClick={() => history.go(-1)}
         >详情</NavBar>
 
-        <Accordion accordion openAnimation={{}} className="my-accordion" onChange={this.onChange}>
-          <Accordion.Panel header="产品信息" style={{marginTop: 25}}>
+        <Accordion accordion defaultActiveKey={'1'} className="my-accordion" onChange={this.onChange}>
+          <Accordion.Panel key={'1'} header="产品信息" style={{marginTop: 25}}>
             <List className="my-list">
               <List.Item>
                 <Flex justify="between">
@@ -80,7 +80,7 @@ class StockDetail extends PureComponent {
           </Accordion.Panel>
 
 
-          <Accordion.Panel header={(
+          <Accordion.Panel   key={'2'}  header={(
             <Flex justify="between">
               <Flex.Item>货位</Flex.Item>
               <Flex.Item>
@@ -135,7 +135,7 @@ class StockDetail extends PureComponent {
                 </List.Item>
               </List>
           </Accordion.Panel>
-          <Accordion.Panel header={(
+          <Accordion.Panel  key={'3'}  header={(
             <Flex justify="between">
               <Flex.Item>货位</Flex.Item>
               <Flex.Item>
@@ -189,7 +189,7 @@ class StockDetail extends PureComponent {
                 </List.Item>
               </List>
           </Accordion.Panel>
-          <Accordion.Panel header={(
+          <Accordion.Panel  key={'4'} header={(
             <Flex justify="between">
               <Flex.Item>货位</Flex.Item>
               <Flex.Item>
@@ -243,7 +243,7 @@ class StockDetail extends PureComponent {
                 </List.Item>
               </List>
           </Accordion.Panel>
-          <Accordion.Panel header={(
+          <Accordion.Panel key={'5'}  header={(
             <Flex justify="between">
               <Flex.Item>货位</Flex.Item>
               <Flex.Item>

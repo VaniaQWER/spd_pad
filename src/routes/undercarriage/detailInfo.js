@@ -4,9 +4,10 @@
 * @Last Modified time: 2018-09-08 01:16:04 
  */
 import React, { PureComponent } from 'react';
-import { Accordion , NavBar,  Icon, WhiteSpace, List, Button, InputItem } from 'antd-mobile';
+import { Accordion , NavBar,  Icon, WhiteSpace, List, Button, InputItem , Modal} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { connect } from 'dva';
+const alert = Modal.alert;
 const Item = List.Item;
 const RuleItem = ({ form, index }) => {
   const { getFieldProps } = form;
@@ -86,7 +87,7 @@ class InvertoryDetail extends PureComponent {
             <Icon key="1" type="right" />,
           ]}
           >
-          <span>{index}1</span>/12
+          <span>1</span>/12
         </NavBar>
         <WhiteSpace size="sm"/>
         <Accordion defaultActiveKey="0" className="my-accordion">
@@ -211,7 +212,12 @@ class InvertoryDetail extends PureComponent {
        
         <WhiteSpace size="sm"/>
         <div style={{ paddingTop: 70,paddingBottom: 16 }}>
-          <Button type='primary'>确认拣货</Button>
+          <Button type='primary' onClick={() =>
+            alert('确认拣货', '是否执行此操作??', [
+              { text: '否', onPress: () => console.log('cancel') },
+              { text: '是', onPress: () => this.props.history.go(-1) },
+            ])
+          }>确认拣货</Button>
         </div>
         
       </div>

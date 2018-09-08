@@ -1,6 +1,13 @@
+/*
+ * @Author: yuwei 盘点列表
+ * @Date: 2018-09-08 11:21:09 
+* @Last Modified time: 2018-09-08 11:21:09 
+ */
+
 import React, { PureComponent } from 'react';
 import { NavBar, Icon , Flex , Modal, List, Button, Tag , InputItem , DatePicker, Card} from 'antd-mobile';
 import ListViewScroll from '../../components/listViewScroll';
+const alert = Modal.alert;
 class Invertory extends PureComponent {
 
   state = {
@@ -57,7 +64,7 @@ class Invertory extends PureComponent {
                 method="GET"
                 item={item => {
                   return (
-                    <Card  full className='scrollList-item'>
+                    <Card  full className='scrollList-item' onClick={this.toDetail}>
                       <Card.Header
                         title={<span style={{ fontSize: 16, color: '#333',fontWeight: 'bold' }}>盘点单号：{item.distributionNo}</span>}
                         extra={<span>明盘全盘   草稿</span>}
@@ -135,7 +142,12 @@ class Invertory extends PureComponent {
                 ></InputItem>
               </div>
 
-              <Button type="primary">确定</Button>
+              <Button type="primary"  onClick={() =>
+                alert('确认新建盘点', '是否执行此操作??', [
+                  { text: '否', onPress: () => console.log('cancel') },
+                  { text: '是', onPress: () =>this.setState({modal:false})},
+                ])
+              }>确定</Button>
             </div>
 
 

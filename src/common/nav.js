@@ -83,6 +83,12 @@ export const getNavData = app => [
       component: dynamicWrapper(app, [], () => import('../routes/inventory/detail'))
     },
     {
+      name: "盘点详情",
+      icon: 'inventory',
+      path: '/inventory/detail/:isEditable',
+      component: dynamicWrapper(app, [], () => import('../routes/inventory/detail'))
+    },
+    {
       name: "库存查询",
       icon: 'stock',
       path: '/stock',

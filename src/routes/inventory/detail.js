@@ -5,10 +5,11 @@
  */
 
 import React, { PureComponent } from 'react';
-import { Accordion , NavBar, Icon, WhiteSpace, List, Button, InputItem } from 'antd-mobile';
+import { Accordion , NavBar, Icon, WhiteSpace, List, Button, InputItem , Modal} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { connect } from 'dva';
 const Item = List.Item;
+const alert = Modal.alert;
 const RuleItem = ({ form, index }) => {
   const { getFieldProps } = form;
   return (
@@ -32,7 +33,8 @@ class InvertoryDetail extends PureComponent {
   state = {
     detailsData: {},
     amount: 0, // 添加批次
-    index: ''
+    index: '',
+    isEditable:false
   }
   componentWillMount = () =>{
     // const { id, index } = this.props.match.params;
@@ -43,6 +45,9 @@ class InvertoryDetail extends PureComponent {
     //     this.setState({ detailsData: data, index });
     //   }
     // });
+
+    const { isEditable } = this.props.match.params;
+    this.setState({isEditable})
   }
   addApprovelNo = () =>{
     let { amount } = this.state;
@@ -57,7 +62,7 @@ class InvertoryDetail extends PureComponent {
      return items;
    }
   render() {
-    const { index, amount } = this.state;
+    const { index, amount , isEditable} = this.state;
     const { history } = this.props;
     return (
       <div>
@@ -86,193 +91,206 @@ class InvertoryDetail extends PureComponent {
             <Icon key="1" type="right" />,
           ]}
           >
-          <span>{index}</span>/12
+          <span>{index}1</span>/12
         </NavBar>
         <WhiteSpace size="sm"/>
-        <Accordion defaultActiveKey="0" className="my-accordion">
-          <Accordion.Panel header="单据信息">
-            <List className="my-list">
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>盘点单号</div>
-                  <div className='list-item-info'>PA002211807000086U</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>类型</div>
-                  <div className='list-item-info'>明盘动盘</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>部门</div>
-                  <div className='list-item-info'>药库</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>制单人</div>
-                  <div className='list-item-info'>李子荣</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>制单时间</div>
-                  <div className='list-item-info'>2018-08-08 12:00:00</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>盘点周期</div>
-                  <div className='list-item-info'>2018-08-06 11:01:26 ~ 2018-08-08 11:22:20</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>盘点人</div>
-                  <div className='list-item-info'></div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>提交时间</div>
-                  <div className='list-item-info'></div>
-                </div>
-              </Item>
-            </List>
-          </Accordion.Panel>
-        </Accordion>
-       
-        <WhiteSpace size="sm"/>
-        <Accordion defaultActiveKey="0" className="my-accordion">
-          <Accordion.Panel header="产品信息">
-            <List>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>货位</div>
-                  <div className='list-item-info'>1231321</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>货位类型</div>
-                  <div className='list-item-info'>发药机货位</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>通用名</div>
-                  <div className='list-item-info'>注射用复方甘草酸苷</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>规格</div>
-                  <div className='list-item-info'>甘草酸苷80mg</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>生产厂家</div>
-                  <div className='list-item-info'>浙江安宝药业有限公司</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>包装规格</div>
-                  <div className='list-item-info'>80mg*12包</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>单位</div>
-                  <div className='list-item-info'>箱</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>账面库存</div>
-                  <div className='list-item-info'>100</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>实际数量</div>
-                  <div className='list-item-info'>100</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>盈亏数量</div>
-                  <div className='list-item-info'>0</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>账面批号</div>
-                  <div className='list-item-info'>PH123133</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>实际批号</div>
-                  <div className='list-item-info'>PH123133</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>生产日期</div>
-                  <div className='list-item-info'>2018-05-06</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>实际生产日期</div>
-                  <div className='list-item-info'>2018-05-06</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>有效期至</div>
-                  <div className='list-item-info'>2018-05-06</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>实际有效期至</div>
-                  <div className='list-item-info'>2018-05-06</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>参考价格</div>
-                  <div className='list-item-info'>21.0000</div>
-                </div>
-              </Item>
-              <Item multipleLine>
-                <div className='list-item'>
-                  <div className='list-item-label'>参考盈亏金额</div>
-                  <div className='list-item-info'>0.0000</div>
-                </div>
-              </Item>
-            </List>
-          </Accordion.Panel>
-        </Accordion>
-       
-        <WhiteSpace size="sm"/>
-        {
-          this._createItem(amount)
-        }
-        <List className="my-list">
-          <Item className='list-center-item' onClick={this.addApprovelNo}>
-            + 增加批号
-          </Item>
-        </List>
-        <div style={{ paddingTop: 70,paddingBottom: 16 }}>
-          <Button type='primary'>确认提交</Button>
-        </div>
+
+        <div style={{height: '90vh',overflowY: 'scroll'}}>
+          <Accordion defaultActiveKey="0" className="my-accordion">
+            <Accordion.Panel header="单据信息">
+              <List className="my-list">
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>盘点单号</div>
+                    <div className='list-item-info'>PA002211807000086U</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>类型</div>
+                    <div className='list-item-info'>明盘动盘</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>部门</div>
+                    <div className='list-item-info'>药库</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>制单人</div>
+                    <div className='list-item-info'>李子荣</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>制单时间</div>
+                    <div className='list-item-info'>2018-08-08 12:00:00</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>盘点周期</div>
+                    <div className='list-item-info'>2018-08-06 11:01:26 ~ 2018-08-08 11:22:20</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>盘点人</div>
+                    <div className='list-item-info'></div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>提交时间</div>
+                    <div className='list-item-info'></div>
+                  </div>
+                </Item>
+              </List>
+            </Accordion.Panel>
+          </Accordion>
         
+          <WhiteSpace size="sm"/>
+          <Accordion defaultActiveKey="0" className="my-accordion">
+            <Accordion.Panel header="产品信息">
+              <List>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>货位</div>
+                    <div className='list-item-info'>1231321</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>货位类型</div>
+                    <div className='list-item-info'>发药机货位</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>通用名</div>
+                    <div className='list-item-info'>注射用复方甘草酸苷</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>规格</div>
+                    <div className='list-item-info'>甘草酸苷80mg</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>生产厂家</div>
+                    <div className='list-item-info'>浙江安宝药业有限公司</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>包装规格</div>
+                    <div className='list-item-info'>80mg*12包</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>单位</div>
+                    <div className='list-item-info'>箱</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>账面库存</div>
+                    <div className='list-item-info'>100</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>实际数量</div>
+                    <div className='list-item-info'>100</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>盈亏数量</div>
+                    <div className='list-item-info'>0</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>账面批号</div>
+                    <div className='list-item-info'>PH123133</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>实际批号</div>
+                    <div className='list-item-info'>PH123133</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>生产日期</div>
+                    <div className='list-item-info'>2018-05-06</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>实际生产日期</div>
+                    <div className='list-item-info'>2018-05-06</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>有效期至</div>
+                    <div className='list-item-info'>2018-05-06</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>实际有效期至</div>
+                    <div className='list-item-info'>2018-05-06</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>参考价格</div>
+                    <div className='list-item-info'>21.0000</div>
+                  </div>
+                </Item>
+                <Item multipleLine>
+                  <div className='list-item'>
+                    <div className='list-item-label'>参考盈亏金额</div>
+                    <div className='list-item-info'>0.0000</div>
+                  </div>
+                </Item>
+              </List>
+            </Accordion.Panel>
+          </Accordion>
+        
+          {
+            isEditable !=="false"?
+            <div>
+              <WhiteSpace size="sm"/>
+              {
+                this._createItem(amount)
+              }
+              <List className="my-list">
+                <Item className='list-center-item' onClick={this.addApprovelNo}>
+                  + 增加批号
+                </Item>
+              </List>
+              <div style={{ paddingTop: 70,paddingBottom: 16 }}>
+                <Button type='primary' onClick={() =>
+                  alert('确认提交', '是否执行此操作??', [
+                    { text: '否', onPress: () => console.log('cancel') },
+                    { text: '是', onPress: () => this.props.history.go(-1) },
+                  ])
+                }>确认提交</Button>
+              </div>
+            </div>
+            :null
+          }
+        </div>
       </div>
     )
   }

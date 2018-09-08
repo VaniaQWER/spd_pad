@@ -5,7 +5,7 @@
  */
 
 import React, { PureComponent } from 'react';
-import { NavBar, Icon , SearchBar , Tabs , Flex , Card , Button} from 'antd-mobile';
+import { NavBar, Icon , SearchBar , Tabs , Flex , Card , Button , Modal} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
 import { connect } from 'dva';
@@ -19,6 +19,7 @@ const tabs = [
   { title: '待拣货' },
   { title: '已拣货' }
 ];
+const alert = Modal.alert;
 class UndercarriageDetail extends PureComponent {
 
   state = {
@@ -103,7 +104,13 @@ class UndercarriageDetail extends PureComponent {
                           <hr className='hr'/>
                           <Flex justify='end'>
                             <Button inline  size="small" className='button-gap' onClick={this.toDetail}>更多详情</Button>
-                            <Button inline  size="small" className='button-gap' type="primary">确认拣货</Button>
+                            <Button inline  size="small" className='button-gap' type="primary" 
+                            onClick={() =>
+                              alert('确认拣货', '是否执行此操作??', [
+                                { text: '否', onPress: () => console.log('cancel') },
+                                { text: '是', onPress: () => console.log('ok') },
+                              ])
+                            }>确认拣货</Button>
                           </Flex>
                         </Card.Body>
                       </Card>
@@ -111,7 +118,7 @@ class UndercarriageDetail extends PureComponent {
                   }}
                 />
               </div>
-              <div style={{height:'70vh' , backgroundColor: '#fff' }}>
+              <div style={{backgroundColor: '#fff' }}>
                   <ListViewScroll 
                     url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
                     queryParams={{
@@ -119,12 +126,11 @@ class UndercarriageDetail extends PureComponent {
                     }}
                     method="GET"
                     item={item => {
-                      console.log(item)
                       return (
                         <Card  full  className='scrollList-item' key={item.id}>
                           <Card.Header
                             title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
-                            extra={<span className='fr'>待拣货</span>}
+                            extra={<span className='fr'>已拣货</span>}
                           />
                           <Card.Body>
                             <Flex>

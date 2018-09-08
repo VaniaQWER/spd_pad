@@ -98,7 +98,7 @@ class Grounding extends PureComponent {
             </div>
             <div className='scrollList'>
               <ListViewScroll 
-                url={`${_local}/groundList`}
+                url={`${_local}/groundList2`}
                 queryParams={{
                   searchParam: searchName
                 }}

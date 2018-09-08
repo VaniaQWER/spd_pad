@@ -81,7 +81,7 @@ class Acceptance extends PureComponent {
             </div>
             <div>
               <ListViewScroll 
-                url={`${_local}/acceptanceList`}
+                url={`${_local}/acceptanceList2`}
                 queryParams={{
                   searchParam: searchName
                 }}

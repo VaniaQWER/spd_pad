@@ -10,6 +10,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
 import { connect } from 'dva';
 import { createForm } from 'rc-form';
+import { _local } from '../../api/local'
 const alert = Modal.alert;
 function renderTabBar(props) {
   return (<Sticky>
@@ -75,7 +76,7 @@ class Stock extends PureComponent {
             onTabClick={this.clickTab}
             >
                 <ListViewScroll 
-                  url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                  url={`${_local}/inventory1`}
                   queryParams={{
                     searchParam: searchName
                   }}
@@ -156,7 +157,7 @@ class Stock extends PureComponent {
                   }}
                 />
                 <ListViewScroll 
-                  url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                  url={`${_local}/inventory2`}
                   queryParams={{
                     searchParam: searchName
                   }}

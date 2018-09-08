@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
-import { NavBar, Icon, SearchBar, Tabs, Card, Flex, Button } from 'antd-mobile';
+import { NavBar, Icon, SearchBar, Tabs, Card, Flex, Button, Modal } from 'antd-mobile';
 import { connect } from 'dva';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { _local } from '../../api/local'
 import ListViewScroll from '../../components/listViewScroll';
+const alert = Modal.alert;
 
 const renderTabBar = (props)=>{
   return (<Sticky>
@@ -25,7 +26,10 @@ class Grounding extends PureComponent {
     this.props.history.push({ pathname: `/grounding/detail/${id}` })
   }
   passGrounding = () =>{
-    this.props.history.push({ pathname: '/result/success' });
+    alert('确定', '是否确定上架???', [
+      { text: '取消', onPress: () => console.log('cancel') },
+      { text: '确认', onPress: () => this.props.history.push({ pathname: '/result/success' }) },
+    ]);
   }
   render() {
     const { searchName } = this.state;

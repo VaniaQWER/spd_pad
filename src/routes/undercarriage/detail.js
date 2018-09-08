@@ -74,7 +74,7 @@ class UndercarriageDetail extends PureComponent {
             >
               <div style={{backgroundColor: '#fff' }}>
                 <ListViewScroll 
-                  url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                  url={`${_local}/undercarriage`}
                   queryParams={{
                     searchParam: searchName
                   }}

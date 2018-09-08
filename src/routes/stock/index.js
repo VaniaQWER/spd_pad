@@ -3,6 +3,7 @@ import { NavBar, Icon , SearchBar , Tabs , Flex , Card} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
 import { connect } from 'dva';
+import { _local } from '../../api/local'
 function renderTabBar(props) {
   return (<Sticky>
     {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
@@ -62,7 +63,7 @@ class Stock extends PureComponent {
             onTabClick={this.clickTab}
             >
                 <ListViewScroll 
-                  url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                  url={`${_local}/stock1`}
                   queryParams={{
                     searchParam: searchName
                   }}
@@ -89,7 +90,7 @@ class Stock extends PureComponent {
                   }}
                 />
                 <ListViewScroll 
-                  url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                  url={`${_local}/stock1`}
                   queryParams={{
                     searchParam: searchName
                   }}

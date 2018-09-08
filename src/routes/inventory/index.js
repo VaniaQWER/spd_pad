@@ -7,6 +7,7 @@
 import React, { PureComponent } from 'react';
 import { NavBar, Icon , Flex , Modal, List, Button, Tag , InputItem , DatePicker, Card} from 'antd-mobile';
 import ListViewScroll from '../../components/listViewScroll';
+import { _local } from '../../api/local'
 const alert = Modal.alert;
 class Invertory extends PureComponent {
 
@@ -57,7 +58,7 @@ class Invertory extends PureComponent {
           <h3 className='scrollList-title'>盘点记录</h3>
           <ul className='scrollList'>
               <ListViewScroll 
-                url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                url={`${_local}/inventory1`}
                 queryParams={{
                   searchParam: searchName
                 }}

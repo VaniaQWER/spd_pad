@@ -82,6 +82,7 @@ html:not([data-scale]) .am-card-body::before{
 }
 .scrollList-item .am-card-footer {
   padding: 8px 15px 0 !important;
+  position: relative;
 }
 html:not([data-scale]) .scrollList-item .am-card-footer::before{
   content: '';

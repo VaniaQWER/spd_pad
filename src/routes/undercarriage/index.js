@@ -8,6 +8,8 @@ import React, { PureComponent } from 'react';
 import { NavBar, Icon , SearchBar , Tabs , Flex , Card, Button} from 'antd-mobile';
 import { StickyContainer, Sticky } from 'react-sticky';
 import ListViewScroll from '../../components/listViewScroll';
+import { _local } from '../../api/local'
+
 function renderTabBar(props) {
   return (<Sticky>
     {({ style }) => <div style={{ ...style, zIndex: 1 }}><Tabs.DefaultTabBar {...props} /></div>}
@@ -75,7 +77,7 @@ class Undercarriage extends PureComponent {
               onTabClick={this.clickTab}
               >
                   <ListViewScroll 
-                    url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                    url={`${_local}/undercarriage`}
                     queryParams={{
                       searchParam: searchName
                     }}
@@ -84,8 +86,8 @@ class Undercarriage extends PureComponent {
                       return (
                         <Card  full  className='scrollList-item' key={item.id} onClick={()=>this.toDetail(item.id)}>
                           <Card.Header
-                            title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>拣货单号：{item.id}</span>}
-                            extra={<span className='fr'>零库存补货  待拣货</span>}
+                            title={<span style={{ fontSize: 15,color: '#333',fontWeight: 'bold' }}>拣货单号：{item.id}</span>}
+                            extra={<span >零库存补货  待拣货</span>}
                           />
                           <Card.Body>
                             <Flex>
@@ -98,7 +100,7 @@ class Undercarriage extends PureComponent {
                     }}
                   />
                   <ListViewScroll 
-                    url={`https://www.easy-mock.com/mock/5b8d3b510ab8991436ebd336/spd/acceptanceList`}
+                    url={`${_local}/undercarriage`}
                     queryParams={{
                       searchParam: searchName
                     }}
@@ -107,8 +109,8 @@ class Undercarriage extends PureComponent {
                       return (
                         <Card  full  className='scrollList-item' key={item.id}>
                           <Card.Header
-                            title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>拣货单号：{item.id}</span>}
-                            extra={<span className='fr'>零库存补货  待拣货</span>}
+                            title={<span style={{ fontSize: 15,color: '#333',fontWeight: 'bold' }}>拣货单号：{item.id}</span>}
+                            extra={<span >零库存补货  待拣货</span>}
                           />
                           <Card.Body>
                             <Flex>

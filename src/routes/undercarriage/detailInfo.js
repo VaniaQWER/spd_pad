@@ -58,7 +58,7 @@ class InvertoryDetail extends PureComponent {
    }
   render() {
     // const { history, form } = this.props;
-    const { index, } = this.state;//detailsData, amount 
+    // const { index, } = this.state;//detailsData, amount 
     const { history } = this.props;
     return (
       <div>

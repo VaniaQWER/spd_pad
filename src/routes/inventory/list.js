@@ -91,7 +91,7 @@ class Stock extends PureComponent {
                         />
                         <Card.Body>
                           <Flex>
-                            <Flex.Item>单位 :<span>{item.distributionNo}</span></Flex.Item>
+                            <Flex.Item>单位 :<span>{item.replanUnit}</span></Flex.Item>
                             <Flex.Item>货位 :<span>{item.distributionNo}</span></Flex.Item>
                           </Flex>
                           <Flex>

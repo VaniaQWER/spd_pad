@@ -72,7 +72,7 @@ class Grounding extends PureComponent {
                   return (
                   <Card full className='scrollList-item'>
                     <Card.Header
-                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                       extra={<span>{'待上架'}</span>}
                     />
                     <Card.Body>
@@ -108,7 +108,7 @@ class Grounding extends PureComponent {
                   return (
                   <Card full className='scrollList-item'>
                     <Card.Header
-                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                       extra={<span>{'已上架'}</span>}
                     />
                     <Card.Body>

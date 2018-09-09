@@ -84,7 +84,7 @@ class UndercarriageDetail extends PureComponent {
                     return (
                       <Card  full  className='scrollList-item' key={item.id}>
                           <Card.Header
-                            title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                            title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                             extra={<span className='fr'>待拣货</span>}
                           />
                           <Card.Body>
@@ -131,7 +131,7 @@ class UndercarriageDetail extends PureComponent {
                       return (
                         <Card  full  className='scrollList-item' key={item.id}>
                           <Card.Header
-                            title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                            title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                             extra={<span className='fr'>已拣货</span>}
                           />
                           <Card.Body>

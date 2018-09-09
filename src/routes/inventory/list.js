@@ -86,7 +86,7 @@ class Stock extends PureComponent {
                     return (
                       <Card  full  className='scrollList-item' key={item.id}>
                         <Card.Header
-                          title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                          title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                           extra={<span className='fr'>未提交</span>}
                         />
                         <Card.Body>
@@ -167,7 +167,7 @@ class Stock extends PureComponent {
                     return (
                       <Card  full  className='scrollList-item' key={item.id} onClick={()=>this.toDetail(false)}>
                         <Card.Header
-                          title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                          title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                           extra={<span className='fr'>已提交</span>}
                         />
                         <Card.Body>

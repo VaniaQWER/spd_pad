@@ -67,7 +67,7 @@ class Acceptance extends PureComponent {
                   return (
                   <Card full className='scrollList-item' onClick={() => history.push({ pathname: `/acceptance/detail/${item.id}/${item.index}` })}>
                     <Card.Header
-                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                       extra={<span>{item.type}</span>}
                     />
                     <Card.Body>
@@ -151,7 +151,7 @@ class Acceptance extends PureComponent {
                   return (
                   <Card full className='scrollList-item' onClick={() => history.push({ pathname: `/acceptance/detail/${item.id}/${item.index}` })}>
                     <Card.Header
-                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.supplierName}</span>}
+                      title={<span style={{ fontSize: 18,color: '#333',fontWeight: 'bold' }}>{item.drugName}</span>}
                       extra={<span>{item.type}</span>}
                     />
                     <Card.Body>
